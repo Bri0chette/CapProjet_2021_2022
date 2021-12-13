@@ -10,44 +10,35 @@ video = cv2.VideoCapture("/home/drone/Bureau/testpython/video4.avi")
 bridge = CvBridge()
 
 
-def talk():
-		while True:
-			success, image = video.read()
-
-			if  success:
-				message = bridge.cv2_to_imgmsg(image, "bgr8")
-				publisher.publish(message)
-				rate.sleep()
-			else:
-				video.set(cv2.CAP_PROP_POS_FRAMES, 0)
-
-
 def callback(data):
-	instruction = data.data
-	print(instruction)
+	messageStation = data.data
+	print(messageStation)
+
+	message = "Message du drone"
+	publisher.publish(message)
+	rate.sleep()
 
 
 def listener():
-	rospy.Subscriber('Publisher_Station', Image, callback)
+	rospy.init_node('Subscriber_Drone_Topic')
+	rospy.Subscriber('Publisher_Station', String, callback)
 	rospy.spin()
 
 
 if __name__ == '__main__':
 	try:
-		# Init
-		rospy.init_node('Drone_Topic', anonymous=True)
 
 		# Publisher
-		publisher = rospy.Publisher('Publisher_Drone', Image, queue_size=10)
+		publisher = rospy.Publisher('Publisher_Drone', String)
+		rospy.init_node('Publisher_Drone_Topic')
 		rate = rospy.Rate(33)
-		rospy.loginfo("Publisher Drone Started")
-
-		# Listener
-		listener()
-		rospy.loginfo("Listener Drone Connected")
 
 		while not rospy.is_shutdown():
-			talk()
+			message = "Message du drone"
+			publisher.publish(message)
+			rate.sleep()
+
+			listener()
 
 	except rospy.ROSInterruptException:
 		pass

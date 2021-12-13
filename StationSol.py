@@ -9,34 +9,31 @@ bridge = CvBridge()
 
 
 def callback(data):
-	cv_img = bridge.imgmsg_to_cv2(data, "bgr8")
-	cv2.imshow("Image de base", cv_img)
+	messageDrone = data.data
+	print(messageDrone)
 
-	message = "OK"
+	message = "Message de la station"
 	publisher.publish(message)
 	rate.sleep()
 
-	cv2.waitKey(1)
-
 
 def listener():
-	rospy.Subscriber('Publisher_Drone', Image, callback)
+	rospy.init_node('Subscriber_Station_Topic')
+	rospy.Subscriber('Publisher_Drone', String, callback)
 	rospy.spin()
 
 
 if __name__ == '__main__':
 	try:
-		# Init node
-		rospy.init_node('Station_Topic', anonymous=True)
 
 		# Publisher
-		publisher = rospy.Publisher('Publisher_Station', Image, queue_size=10)
+		publisher = rospy.Publisher('Publisher_Station', String)
+		rospy.init_node('Publisher_Station_Topic')
 		rate = rospy.Rate(33)
-		rospy.loginfo("Publisher Station Started")
 
-		# Listener
-		listener()
-		rospy.loginfo("Listener Station Connected")
+		while not rospy.is_shutdown():
+			listener()
+
 
 	except rospy.ROSInterruptException:
 		pass
