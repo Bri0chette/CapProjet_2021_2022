@@ -52,7 +52,7 @@ while True:
     # Modification de l'image pour faciliter la détection de contours
     imageModified = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     imageModified = cv2.GaussianBlur(imageModified, (7, 7), 2)
-    imageModified = cv2.Canny(imageModified, 100, 100)
+    imageModified = cv2.Canny(imageModified, 50, 50)
 
     # FPS de la vidéo
     cv2.putText(image, "FPS : " + str(video.get(cv2.CAP_PROP_FPS)),(image.shape[1] - 100, 15), cv2.FONT_HERSHEY_COMPLEX, 0.5, (255, 0, 255), 1)

@@ -107,9 +107,9 @@ while True :
         messageX = "none"
     else:
         if int(centerWinX) < targetPointXMin:
-            messageX = "DROITE"
-        elif int(centerWinX) > targetPointXMax:
             messageX = "GAUCHE"
+        elif int(centerWinX) > targetPointXMax:
+            messageX = "DROITE"
         else:
             messageX = "OK"
 
@@ -117,9 +117,9 @@ while True :
         messageY = "none"
     else:
         if int(centerWinY) < targetPointYMin:
-            messageY = "BAS"
-        elif int(centerWinY) > targetPointYMax:
             messageY = "HAUT"
+        elif int(centerWinY) > targetPointYMax:
+            messageY = "BAS"
         else:
             messageY = "OK"
 
@@ -131,5 +131,5 @@ while True :
     cv2.imshow("Mask", mask)
     cv2.imshow("Image filtrée et détection", imageFiltered)
 
-    if cv2.waitKey(33) & 0xFF == ord('q'):
+    if cv2.waitKey(200) & 0xFF == ord('q'):
         break
