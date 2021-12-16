@@ -131,5 +131,5 @@ while True :
     cv2.imshow("Mask", mask)
     cv2.imshow("Image filtrée et détection", imageFiltered)
 
-    if cv2.waitKey(200) & 0xFF == ord('q'):
+    if cv2.waitKey(33) & 0xFF == ord('q'):
         break
