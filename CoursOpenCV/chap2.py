@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 print("Package imported")
 
-image = cv2.imread("../Ressources/Zoro.png")
+image = cv2.imread("../Scripts IA/Ressources/Zoro.png")
 kernel = np.ones((5, 5), np.uint8)
 
 imageGris = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)

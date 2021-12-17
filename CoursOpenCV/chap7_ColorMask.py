@@ -37,7 +37,7 @@ def stackImages(scale, imgArray):
     return ver
 
 
-path = "../Ressources/Zoro.png"
+path = "../Scripts IA/Ressources/Zoro.png"
 
 cv2.namedWindow("TrackBars")
 cv2.resizeWindow("TrackBars", 640, 300)

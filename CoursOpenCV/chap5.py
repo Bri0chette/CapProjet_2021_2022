@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-image = cv2.imread("../Ressources/Zoro.png")
+image = cv2.imread("../Scripts IA/Ressources/Zoro.png")
 
 width = 200
 height = 100

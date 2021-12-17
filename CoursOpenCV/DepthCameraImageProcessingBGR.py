@@ -42,7 +42,7 @@ def getContours(image):
     return contours
 
 
-path = "../Ressources/out5.png"
+path = "../Scripts IA/Ressources/out5.png"
 kernel = np.ones((5, 5), np.uint8)
 
 

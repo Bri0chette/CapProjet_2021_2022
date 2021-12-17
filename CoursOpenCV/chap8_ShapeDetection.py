@@ -63,7 +63,7 @@ def getContours(image):
 
 
 
-path = "../Ressources/Formes.jpg"
+path = "../Scripts IA/Ressources/Formes.jpg"
 
 image = cv2.imread(path)
 image = cv2.resize(image, (720, 480))

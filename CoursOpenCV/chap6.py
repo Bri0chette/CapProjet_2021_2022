@@ -35,7 +35,7 @@ def stackImages(scale, imgArray):
     return ver
 
 
-image = cv2.imread("../Ressources/Zoro.png")
+image = cv2.imread("../Scripts IA/Ressources/Zoro.png")
 
 imageStack = stackImages(0.5, ([image, image], [image, image]))
 
